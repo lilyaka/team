@@ -1,18 +1,19 @@
-require('dotenv').config()
-
 module.exports = {
-  siteMetadata: {
-    title: `Creative Portfolio`,
-  },
-  plugins: [
-    `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-sass`,
-    `gatsby-transformer-remark`,
-    {
-      resolve: `gatsby-source-datocms`,
-      options: {
-        apiToken: process.env.DATO_API_TOKEN,
-      },
+    siteMetadata: {
+        title: 'Wordpress Gatsby',
+        subtitle: `Fetch Data From Local WP Install`,
     },
-  ],
-}
+    plugins: [
+        'gatsby-plugin-react-helmet',
+        {
+            resolve: "gatsby-source-wordpress",
+            options: {
+                baseUrl: "gatsby-wp.localhost",
+                protocol: "http",
+                hostingWPCOM: false,
+                useACF: true,
+                verboseOutput: true
+            }
+        }
+    ],
+};
